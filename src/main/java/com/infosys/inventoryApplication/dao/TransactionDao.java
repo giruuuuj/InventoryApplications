@@ -1,6 +1,8 @@
 package com.infosys.inventoryApplication.dao;
 
 import java.util.List;
+
+import com.infosys.inventoryApplication.bean.ProductSale;
 import com.infosys.inventoryApplication.bean.Transaction;
 
 public interface TransactionDao {
@@ -11,4 +13,5 @@ public interface TransactionDao {
     public List<Transaction> showAllTransaction();
     public void removeTransactionById(Long id);
     public List<Double> getDemandByProduct(String productId);
+    public List<ProductSale> getProductWiseTotalSale();
 }

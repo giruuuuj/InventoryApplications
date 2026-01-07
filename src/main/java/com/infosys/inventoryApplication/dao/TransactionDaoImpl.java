@@ -3,6 +3,8 @@ package com.infosys.inventoryApplication.dao;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.infosys.inventoryApplication.bean.ProductSale;
 import com.infosys.inventoryApplication.bean.Transaction;
 
 @Repository
@@ -45,4 +47,8 @@ public class TransactionDaoImpl implements TransactionDao {
     public List<Double> getDemandByProduct(String productId) {
         return repository.getDemandByProduct(productId);
     }
+    @Override
+	public List<ProductSale> getProductWiseTotalSale() {
+		return repository.getProductWiseTotalSale();
+	}
 }

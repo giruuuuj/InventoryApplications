@@ -3,6 +3,8 @@ package com.infosys.inventoryApplication.controller;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import com.infosys.inventoryApplication.bean.ProductSale;
 import com.infosys.inventoryApplication.bean.Transaction;
 import com.infosys.inventoryApplication.dao.TransactionDao;
 import com.infosys.inventoryApplication.service.TransactionService;
@@ -48,6 +50,12 @@ public class TransactionController {
         return service.generateId();
     }
 
+    // Save transaction (alternative endpoint)
+    @PostMapping("/trans")
+    public void saveTransactionTrans(@RequestBody Transaction transaction) {
+        transactionDao.saveTransaction(transaction);
+    }
+
     // Get transactions by type
     @GetMapping("/trans/type/{type}")
     public List<Transaction> findAllTransactionsByType(@PathVariable String type) {
@@ -58,5 +66,9 @@ public class TransactionController {
     @GetMapping("/analysis/{id}")
     public List<Double> getDemandByProduct(@PathVariable String id) {
         return transactionDao.getDemandByProduct(id);
+    }
+    @GetMapping("/analysis")
+    public List<ProductSale>  getProductWiseTotalSale(){
+    	return transactionDao.getProductWiseTotalSale();
     }
 }

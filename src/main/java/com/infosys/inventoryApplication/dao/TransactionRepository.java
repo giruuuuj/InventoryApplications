@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import com.infosys.inventoryApplication.bean.ProductSale;
 import com.infosys.inventoryApplication.bean.Transaction;
 
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
@@ -15,12 +16,12 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
     @Query("select a from Transaction a where transactionType = ?1")
     public List<Transaction> findTransactionByType(String type);
 
-    /*
-    @Query("SELECT new com.infosys.inventoryApplication.bean.ProductSales(p.productName, SUM(s.transactionValue)) " +
+    
+    @Query("SELECT new com.infosys.inventoryApplication.bean.ProductSale(p.productName, SUM(s.transactionValue)) " +
            "FROM Product p JOIN Transaction s ON p.productId = s.productId " +
            "WHERE s.transactionType = 'OUT' GROUP BY p.productId")
-    public List<ProductSales> getProductWiseTotalSale();
-    */
+    public List<ProductSale> getProductWiseTotalSale();
+    
 
     @Query("SELECT s.transactionValue from Transaction s WHERE s.transactionType = 'OUT' and s.productId = ?1")
     public List<Double> getDemandByProduct(String productId);
