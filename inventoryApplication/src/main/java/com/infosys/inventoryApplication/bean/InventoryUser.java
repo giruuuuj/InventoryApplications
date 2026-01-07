@@ -4,6 +4,7 @@ package com.infosys.inventoryApplication.bean;
 import java.util.ArrayList;
 import java.util.Collection;
 
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
@@ -19,6 +20,8 @@ public class InventoryUser extends User {
     private String password;
     private String personalName;
     private String email;
+
+    
     private String role;
 
     public InventoryUser() {
